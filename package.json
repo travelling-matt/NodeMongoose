@@ -19,6 +19,7 @@
   "homepage": "https://github.com/travelling-matt/NodeMongoose#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "mongoose": "^6.0.14"
+    "mongoose": "^6.0.14",
+    "yargs": "^17.3.0"
   }
 }

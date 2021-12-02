@@ -13,7 +13,7 @@ exports.addMovie = async (movieObj) => {
 
 exports.listMovies = async () => {
     try {
-        consol.log(await Movie.find({})); //when using .find method need empty object inside brackets
+        console.log(await Movie.find({})); //when using .find method need empty object inside brackets
     } catch (error) {
         console.log(error);
     }
