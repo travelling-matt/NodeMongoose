@@ -3,7 +3,7 @@ require("./db/connection")
 
 const yargs = require("yargs");
 
-const { addMovie, listMovies, updateMovie } = require("./movie/movieMethods");
+const { addMovie, listMovies, updateMovie, deleteMovie } = require("./movie/movieMethods");
 
 const app = async (args) => {
     switch (process.argv[2]){
@@ -21,6 +21,10 @@ const app = async (args) => {
         break;
         case "update":
             await updateMovie({ title:args.title, newTitle:args.newTitle } )
+            listMovies();
+        break;
+        case "delete":
+            await deleteMovie({ title:args.title })
             listMovies();
         break;
         default:

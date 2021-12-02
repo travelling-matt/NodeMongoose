@@ -22,6 +22,16 @@ exports.listMovies = async () => {
 exports.updateMovie = async (movieObj) => {
     try{
         await Movie.updateOne({ 'title': movieObj.title }, { 'title': movieObj.newTitle });
+        console.log()
+    } catch (error){
+        console.log(error);
+    }
+}
+
+exports.deleteMovie = async (movieObj) => {
+    try{
+        await Movie.deleteOne({ 'title': movieObj.title });
+        console.log(`${movieObj.title} deleted`)
     } catch (error){
         console.log(error);
     }
