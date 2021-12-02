@@ -17,4 +17,12 @@ exports.listMovies = async () => {
     } catch (error) {
         console.log(error);
     }
+};
+
+exports.updateMovie = async (movieObj) => {
+    try{
+        await Movie.updateOne({ 'title': movieObj.title }, { 'title': movieObj.newTitle });
+    } catch (error){
+        console.log(error);
+    }
 }

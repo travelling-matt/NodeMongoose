@@ -11,7 +11,7 @@ const movieSchema = new mongoose.Schema({
     },
     genre: {
         type: String,
-    }
+    },
 });
 
 const Movie = mongoose.model("Movie", movieSchema);
