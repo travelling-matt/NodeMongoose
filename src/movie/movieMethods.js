@@ -36,6 +36,27 @@ exports.updateMovie = async (movieObj) => {
     }
 };
 
+exports.updateMovieVariable = async (movieObj) => {
+    try{
+        await Movie.updateOne({ [movieObj.key]: movieObj.value }, { [movieObj.newKey]: movieObj.newValue });
+        await mongoose.connection.close(); 
+        console.log("db connection closed")
+    } catch (error){
+        console.log(error);
+    }
+};
+
+exports.updateMovieMany = async (movieObj) => {
+    try{
+        await Movie.updateMany({ 'actor': movieObj.actor }, { 'actor': movieObj.newActor });
+        console.log()
+        await mongoose.connection.close(); 
+        console.log("db connection closed")
+    } catch (error){
+        console.log(error);
+    }
+};
+
 exports.deleteMovie = async (movieObj) => {
     try{
         await Movie.deleteOne({ 'title': movieObj.title });
@@ -91,3 +112,13 @@ exports.searchAll = async (movieObj) => {
     }
 };
 
+exports.updateMovieMany = async (movieObj) => {
+    try{
+        await Movie.updateMany({ 'actor': movieObj.actor }, { 'actor': movieObj.newActor });
+        console.log()
+        await mongoose.connection.close(); 
+        console.log("db connection closed")
+    } catch (error){
+        console.log(error);
+    }
+};
