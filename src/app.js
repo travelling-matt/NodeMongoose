@@ -3,7 +3,7 @@ require("./db/connection")
 
 const yargs = require("yargs");
 
-const { addMovie, listMovies, updateMovie, deleteMovie } = require("./movie/movieMethods");
+const { addMovie, listMovies, updateMovie, deleteMovie, searchTitle, searchActor, searchGenre, searchAll } = require("./movie/movieMethods");
 
 const app = async (args) => {
     switch (process.argv[2]){
@@ -26,6 +26,18 @@ const app = async (args) => {
         case "delete":
             await deleteMovie({ title:args.title })
             listMovies();
+        break;
+        case "search title":
+            searchTitle(args.title)
+        break;
+        case "search actor":
+            searchActor(args.actor)
+        break;
+        case "search genre":
+            searchGenre(args.genre)
+        break;
+        case "search all":
+            searchAll(args.search)
         break;
         default:
             console.log("Incorrect command");

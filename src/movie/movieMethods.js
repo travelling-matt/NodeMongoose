@@ -26,12 +26,48 @@ exports.updateMovie = async (movieObj) => {
     } catch (error){
         console.log(error);
     }
-}
+};
 
 exports.deleteMovie = async (movieObj) => {
     try{
         await Movie.deleteOne({ 'title': movieObj.title });
         console.log(`${movieObj.title} deleted`)
+    } catch (error){
+        console.log(error);
+    }
+},
+
+exports.searchTitle = async (movieObj) => {
+    try{
+        const result = await Movie.find({ 'title': movieObj });
+        console.log(result)
+    } catch (error){
+        console.log(error);
+    }
+};
+
+exports.searchActor = async (movieObj) => {
+    try{
+        const result = await Movie.find({ 'actor': movieObj });
+        console.log(result)
+    } catch (error){
+        console.log(error);
+    }
+};
+
+exports.searchGenre = async (movieObj) => {
+    try{
+        const result = await Movie.find({ 'genre': movieObj });
+        console.log(result)
+    } catch (error){
+        console.log(error);
+    }
+};
+
+exports.searchAll = async (movieObj) => {
+    try {
+        const result = await Movie.find({ $or: [{ 'title': movieObj }, { 'actor': movieObj}, { 'genre': movieObj}] });
+        console.log(result)
     } catch (error){
         console.log(error);
     }
